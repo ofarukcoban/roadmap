@@ -10,14 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>admin-server</module>
-        <module>config-server</module>
-        <module>api-server</module>
-        <module>discovery-server</module>
-        <module>authorization-server</module>
-        <module>monitoring-server</module>
-        <module>user-service</module>
-        <module>corporation-service</module>
-        <module>story-service</module>
+
     </modules>
 
     <properties>
