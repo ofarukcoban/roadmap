@@ -10,6 +10,11 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>admin-server</module>
+        <module>config-server</module>
+        <module>discovery-server</module>
+        <module>routing-server</module>
+        <module>security-server</module>
+        <module>tracing-server</module>
 
     </modules>
 
