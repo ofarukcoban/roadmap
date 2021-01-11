@@ -3,7 +3,9 @@ admin-server:
     https://github.com/codecentric/spring-boot-admin
 
 config-server:
-
+    https://spring.io/guides/gs/centralized-configuration/
+    https://cloud.spring.io/spring-cloud-config/reference/html/
+    https://github.com/spring-cloud/spring-cloud-config
 
 discovery-server:
     https://spring.io/guides/gs/service-registration-and-discovery/
