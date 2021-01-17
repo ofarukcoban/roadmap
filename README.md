@@ -16,4 +16,6 @@ routing-server:
     https://github.com/Netflix/zuul
 
 security-server:
+    https://www.baeldung.com/spring-cloud-security
+    https://github.com/spring-cloud/spring-cloud-security
 tracing-server:
