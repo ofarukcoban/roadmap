@@ -1,7 +1,3 @@
-admin-server: 
-    https://www.baeldung.com/spring-boot-admin
-    https://github.com/codecentric/spring-boot-admin
-
 config-server:
     https://spring.io/guides/gs/centralized-configuration/
     https://cloud.spring.io/spring-cloud-config/reference/html/
@@ -15,7 +11,12 @@ routing-server:
     https://spring.io/guides/gs/routing-and-filtering/
     https://github.com/Netflix/zuul
 
+admin-server:
+    https://www.baeldung.com/spring-boot-admin
+    https://github.com/codecentric/spring-boot-admin
+
 security-server:
     https://www.baeldung.com/spring-cloud-security
     https://github.com/spring-cloud/spring-cloud-security
+
 tracing-server:

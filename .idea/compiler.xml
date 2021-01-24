@@ -7,30 +7,40 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
-        <module name="admin-server" />
         <module name="discovery-server" />
+        <module name="story-service" />
         <module name="routing-server" />
+        <module name="admin-server" />
+        <module name="user-service" />
+        <module name="corporation-service" />
         <module name="tracing-server" />
         <module name="security-server" />
+      </profile>
+      <profile name="Annotation profile for Unknown" enabled="true">
+        <sourceOutputDir name="../../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="wrapper (2)" />
+        <module name="wrapper (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-server" target="11" />
       <module name="authorization-server" target="11" />
-      <module name="corporation-service" target="11" />
       <module name="monitoring-server" target="11" />
-      <module name="story-service" target="11" />
-      <module name="user-service" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="admin-server" options="-parameters" />
       <module name="config-server" options="-parameters" />
+      <module name="corporation-service" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
       <module name="routing-server" options="-parameters" />
       <module name="security-server" options="-parameters" />
+      <module name="story-service" options="-parameters" />
       <module name="tracing-server" options="-parameters" />
+      <module name="user-service" options="-parameters" />
     </option>
   </component>
 </project>

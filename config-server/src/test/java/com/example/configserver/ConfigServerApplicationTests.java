@@ -1,13 +1,21 @@
 package com.example.configserver;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
-class ConfigServerApplicationTests {
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.config.server.environment.EnvironmentController;
+
+@SpringBootTest(properties = { "spring.profiles.active=dev" })
+public class ConfigServerApplicationTests {
+
+	@Autowired
+	private EnvironmentController controller;
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
+		assertThat(controller).isNotNull();
 	}
 
 }
