@@ -20,3 +20,9 @@ security-server:
     https://github.com/spring-cloud/spring-cloud-security
 
 tracing-server:
+
+
+
+sorular:
+
+config server pomda eureka client olmalı mı?
