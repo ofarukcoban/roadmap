@@ -26,3 +26,8 @@ tracing-server:
 sorular:
 
 config server pomda eureka client olmalı mı?
+
+swagger2: api-doc oluşturma https://github.com/piomin/sample-spring-microservices-new
+
+Spring Sleuth: log takibini kolaylaştırır https://github.com/piomin/sample-spring-microservices-new
+ 
