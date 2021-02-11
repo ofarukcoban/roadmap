@@ -1,0 +1,105 @@
+version: '1'
+
+services:
+  config-server:
+    container_name: config-server
+    build:
+      context: ./config-server
+      dockerfile: Dockerfile
+    ports:
+      - 8888:8888
+
+  discovery-server:
+    container_name: discovery-server
+    build:
+      context: ./discovery-server
+      dockerfile: Dockerfile
+    depends_on:
+      - config-server
+    entrypoint: ["./dockerize","-wait=tcp://config-server:8888","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
+    ports:
+      - 8761:8761
+
+  routing-server:
+    container_name: routing-server
+    build:
+      context: ./routing-server
+      dockerfile: Dockerfile
+    depends_on:
+      - config-server
+      - discovery-server
+    entrypoint: [ "./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher" ]
+    ports:
+      - 8080:8080
+
+  admin-server:
+    container_name: admin-server
+    build:
+      context: ./admin-server
+      dockerfile: Dockerfile
+    depends_on:
+      - config-server
+      - discovery-server
+    entrypoint: [ "./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher" ]
+    ports:
+      - 9090:9090
+
+#  tracing-server:
+#    image: openzipkin/zipkin
+#    container_name: tracing-server
+#    mem_limit: 512M
+#    environment:
+#      - JAVA_OPTS=-XX:+UnlockExperimentalVMOptions -Djava.security.egd=file:/dev/./urandom
+#    ports:
+#      - 9411:9411
+#
+#  grafana-server:
+#    build: ./docker/grafana
+#    container_name: grafana-server
+#    mem_limit: 256M
+#    ports:
+#      - 3000:3000
+#
+#  prometheus-server:
+#    build: ./docker/prometheus
+#    container_name: prometheus-server
+#    mem_limit: 256M
+#    ports:
+#      - 9091:9090
+
+  user-service:
+    container_name: user-service
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    depends_on:
+      - config-server
+      - discovery-server
+    entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
+    ports:
+      - 8081:8081
+
+  corporation-service:
+    container_name: corporation-service
+    build:
+      context: ./corporation-service
+      dockerfile: Dockerfile
+    depends_on:
+      - config-server
+      - discovery-server
+    entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
+    ports:
+      - 8082:8082
+
+  story-service:
+    container_name: story-service
+    build:
+      context: ./story-service
+      dockerfile: Dockerfile
+    depends_on:
+      - config-server
+      - discovery-server
+    entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
+    ports:
+      - 8083:8083
+

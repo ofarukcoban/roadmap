@@ -20,14 +20,15 @@
         <sourceOutputDir name="../../target/generated-sources/annotations" />
         <sourceTestOutputDir name="../../target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wrapper (2)" />
-        <module name="wrapper (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-server" target="11" />
       <module name="authorization-server" target="11" />
+      <module name="demo" target="11" />
       <module name="monitoring-server" target="11" />
+      <module name="wrapper (1)" target="1.5" />
+      <module name="wrapper (2)" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -35,6 +36,7 @@
       <module name="admin-server" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="corporation-service" options="-parameters" />
+      <module name="demo" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
       <module name="routing-server" options="-parameters" />
       <module name="security-server" options="-parameters" />
