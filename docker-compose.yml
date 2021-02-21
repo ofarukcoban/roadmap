@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8888:8888
+    networks:
+      - meta-network
 
   discovery-server:
     container_name: discovery-server
@@ -19,6 +21,8 @@ services:
     entrypoint: ["./dockerize","-wait=tcp://config-server:8888","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
     ports:
       - 8761:8761
+    networks:
+      - meta-network
 
   routing-server:
     container_name: routing-server
@@ -31,6 +35,8 @@ services:
     entrypoint: [ "./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher" ]
     ports:
       - 8080:8080
+    networks:
+      - meta-network
 
   admin-server:
     container_name: admin-server
@@ -43,6 +49,8 @@ services:
     entrypoint: [ "./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher" ]
     ports:
       - 9090:9090
+    networks:
+      - meta-network
 
 #  tracing-server:
 #    image: openzipkin/zipkin
@@ -78,6 +86,8 @@ services:
     entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
     ports:
       - 8081:8081
+    networks:
+      - meta-network
 
   corporation-service:
     container_name: corporation-service
@@ -90,6 +100,8 @@ services:
     entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
     ports:
       - 8082:8082
+    networks:
+      - meta-network
 
   story-service:
     container_name: story-service
@@ -102,4 +114,8 @@ services:
     entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
     ports:
       - 8083:8083
+    networks:
+      - meta-network
 
+networks:
+  meta-network:
